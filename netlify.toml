@@ -1,0 +1,39 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/our-work"
+  to   = "/our-work/"
+  status = 301
+
+[[redirects]]
+  from = "/insights"
+  to   = "/insights/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to   = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/pricing"
+  to   = "/pricing/"
+  status = 301

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Ethostrategy</title>
+  <meta name="description" content="Reach out to Ethostrategy. Every engagement starts with a conversation." />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,800&display=swap" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="star-field"></canvas>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo" aria-label="Ethostrategy home">
+      <canvas id="nav-logo-canvas" width="34" height="34"></canvas>
+      <span class="nav-logo-text"><span class="etho">etho</span><span class="strategy">strategy</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/our-work/">Our Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/pricing/" class="btn btn-primary">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="page-intro">
+      <div class="page-intro-inner">
+        <span class="section-label">Contact</span>
+        <h1>Let's build something <span class="ethics">ethical.</span></h1>
+        <p>Tell us a little about your organization and what you're working on. We'll get back within two business days.</p>
+      </div>
+    </section>
+
+    <section class="bordered">
+      <div class="section-inner">
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <h2>Every engagement starts with a conversation.</h2>
+            <p>Short form, direct answers, no pitch decks. If we're a fit, we'll schedule a call. If we're not, we'll try to point you somewhere better.</p>
+            <p style="margin-top: 28px;">Email us directly at <a href="mailto:ethostrategy@gmail.com">ethostrategy@gmail.com</a></p>
+          </div>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/?success=true">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="field">
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="org" />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="field">
+              <label for="message">What are you working on?</label>
+              <textarea id="message" name="message" required placeholder="A sentence or two is plenty."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <ul class="footer-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/our-work/">Our Work</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/pricing/">Pricing</a></li>
+    </ul>
+    <p>© 2026 Ethostrategy · Founder-led consulting · ethostrategy@gmail.com</p>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
