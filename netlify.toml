@@ -19,21 +19,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[redirects]]
-  from = "/our-work"
-  to   = "/our-work/"
-  status = 301
-
-[[redirects]]
-  from = "/insights"
-  to   = "/insights/"
-  status = 301
-
-[[redirects]]
-  from = "/contact"
-  to   = "/contact/"
-  status = 301
-
-[[redirects]]
-  from = "/pricing"
-  to   = "/pricing/"
-  status = 301
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false

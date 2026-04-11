@@ -4,54 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ethostrategy — Strategy built on ethics. Impact built to last.</title>
-  <meta name="description" content="Founder-led consulting for organizations committed to doing good — the right way. Strategy built on ethics, impact built to last." />
+  <meta name="description" content="Founder-led consulting for organizations committed to doing good — the right way." />
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,800&display=swap" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="star-field"></canvas>
+  <canvas id="skyCanvas"></canvas>
 
-  <!-- NAV -->
   <nav class="nav">
-    <a href="/" class="nav-logo" aria-label="Ethostrategy home">
-      <canvas id="nav-logo-canvas" width="34" height="34"></canvas>
-      <span class="nav-logo-text"><span class="etho">etho</span><span class="strategy">strategy</span></span>
+    <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+      <canvas id="logoCanvas" width="480" height="60"></canvas>
     </a>
-    <ul class="nav-links">
-      <li><a href="/our-work/">Our Work</a></li>
-      <li><a href="/insights/">Insights</a></li>
-      <li><a href="/contact/">Contact</a></li>
-      <li><a href="/pricing/" class="btn btn-primary">Get Started</a></li>
-    </ul>
+    <div class="nav-links">
+      <a href="/our-work/">Our Work</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <div class="pill">[ FOUNDER-LED ]</div>
-          <h1>Strategy built on <span class="ethics">ethics.</span><br/>Impact built to last.</h1>
-          <p class="hero-sub">Consulting for organizations committed to doing good — the right way.</p>
-          <div class="hero-cta">
-            <a href="/pricing/" class="btn btn-primary">Get Started</a>
-            <a href="#how-it-works" class="text-link">See How It Works →</a>
-          </div>
+      <div class="hero-left">
+        <div class="hero-eyebrow">[FOUNDER-LED]</div>
+        <h1 class="hero-h1">Strategy built on <em>ethics.</em> Impact built to last.</h1>
+        <p class="hero-sub">Consulting for organizations committed to doing good — the right way.</p>
+        <div class="hero-actions">
+          <a href="/pricing/" class="btn-primary">GET STARTED</a>
+          <a href="#how-it-works" class="btn-text">See How It Works →</a>
         </div>
-        <div class="hero-visual">
-          <canvas id="arctic-globe" width="560" height="560"></canvas>
-        </div>
+      </div>
+      <div class="hero-right">
+        <canvas id="globeCanvas" width="800" height="800"></canvas>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="how-it-works" class="bordered">
+    <section id="how-it-works" class="section bordered">
       <div class="section-inner">
-        <span class="section-label">What We Do</span>
+        <span class="eyebrow">What We Do</span>
         <h2 class="section-title">Three ways to work together — all founder-led, all rooted in ethics.</h2>
-        <p class="section-lede">Whether you need a rapid audit, a focused engagement, or a full strategic partnership, each tier is built around the same five-pillar ethical framework.</p>
+        <p class="section-lede">Whether you need a rapid audit, a focused engagement, or a full strategic partnership, each tier is built around the same five-pillar framework.</p>
 
         <div class="card-grid grid-3">
           <div class="card service-card">
@@ -61,10 +57,10 @@
             <ul>
               <li>Ethical baseline assessment</li>
               <li>2-week engagement</li>
-              <li>Findings report + recommendations</li>
+              <li>Findings + recommendations</li>
               <li>Founder-led, async first</li>
             </ul>
-            <a href="/pricing/" class="btn btn-ghost">Learn More</a>
+            <a href="/pricing/" class="btn-ghost">Learn more</a>
           </div>
 
           <div class="card service-card featured">
@@ -77,7 +73,7 @@
               <li>Stakeholder workshops</li>
               <li>Written strategy + handoff</li>
             </ul>
-            <a href="/pricing/" class="btn btn-primary">Start Here</a>
+            <a href="/pricing/" class="btn-primary">Start here</a>
           </div>
 
           <div class="card service-card">
@@ -90,58 +86,33 @@
               <li>Embedded with your team</li>
               <li>Board-level support</li>
             </ul>
-            <a href="/pricing/" class="btn btn-ghost">Learn More</a>
+            <a href="/pricing/" class="btn-ghost">Learn more</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FRAMEWORK -->
-    <section class="bordered">
+    <section class="section bordered">
       <div class="section-inner">
-        <span class="section-label">The Framework</span>
+        <span class="eyebrow">The Framework</span>
         <h2 class="section-title">Five pillars that hold every decision up to the light.</h2>
         <p class="section-lede">Our work is anchored in five non-negotiable ethical principles. Every recommendation, every strategy, every engagement is tested against them.</p>
 
         <div class="card-grid grid-5">
-          <div class="card pillar-card">
-            <div class="ring"></div>
-            <div class="card-num">01</div>
-            <h3>Consent</h3>
-            <p>Informed, ongoing, and revocable — never assumed.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="ring"></div>
-            <div class="card-num">02</div>
-            <h3>Representation</h3>
-            <p>Those closest to the issue drive the work.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="ring"></div>
-            <div class="card-num">03</div>
-            <h3>Dignity</h3>
-            <p>Every person treated as inherently worthy.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="ring"></div>
-            <div class="card-num">04</div>
-            <h3>Sovereignty</h3>
-            <p>Communities keep control over their own futures.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="ring"></div>
-            <div class="card-num">05</div>
-            <h3>Accountability</h3>
-            <p>Commitments you can measure — and be held to.</p>
-          </div>
+          <div class="card pillar-card"><div class="ring"></div><div class="card-num">01</div><h3>Consent</h3><p>Informed, ongoing, and revocable — never assumed.</p></div>
+          <div class="card pillar-card"><div class="ring"></div><div class="card-num">02</div><h3>Representation</h3><p>Those closest to the issue drive the work.</p></div>
+          <div class="card pillar-card"><div class="ring"></div><div class="card-num">03</div><h3>Dignity</h3><p>Every person treated as inherently worthy.</p></div>
+          <div class="card pillar-card"><div class="ring"></div><div class="card-num">04</div><h3>Sovereignty</h3><p>Communities keep control over their own futures.</p></div>
+          <div class="card pillar-card"><div class="ring"></div><div class="card-num">05</div><h3>Accountability</h3><p>Commitments you can measure — and be held to.</p></div>
         </div>
       </div>
     </section>
 
     <!-- CLIENT WORK -->
-    <section class="bordered">
+    <section class="section bordered">
       <div class="section-inner">
-        <span class="section-label">Client Work</span>
+        <span class="eyebrow">Client Work</span>
         <h2 class="section-title">Organizations doing the hard, necessary work.</h2>
 
         <div class="client-row">
@@ -151,10 +122,8 @@
           </div>
           <div>
             <p>Supporting a disability-services organization in building equitable care protocols that center consent and client sovereignty. Our engagement redefined intake, consent, and communication practices from the ground up.</p>
-            <div class="pillars">
-              <span>Consent</span><span>Dignity</span><span>Sovereignty</span>
-            </div>
-            <a href="/our-work/#luminous" class="text-link">Read case study →</a>
+            <div class="pillars"><span>Consent</span><span>Dignity</span><span>Sovereignty</span></div>
+            <a href="/our-work/#luminous-pathways" class="btn-text" style="margin-left:0;">Read case study →</a>
           </div>
         </div>
 
@@ -165,10 +134,8 @@
           </div>
           <div>
             <p>A mental-health platform rethinking how people navigate the end of relationships. We built ethical content guidelines, a representation strategy, and a framework for handling sensitive user stories with care.</p>
-            <div class="pillars">
-              <span>Representation</span><span>Dignity</span><span>Accountability</span>
-            </div>
-            <a href="/our-work/#unraveled" class="text-link">Read case study →</a>
+            <div class="pillars"><span>Representation</span><span>Dignity</span><span>Accountability</span></div>
+            <a href="/our-work/#unraveled" class="btn-text" style="margin-left:0;">Read case study →</a>
           </div>
         </div>
 
@@ -179,19 +146,17 @@
           </div>
           <div>
             <p>A global advocacy organization working to end period stigma and expand access. We developed a community-led research framework and an advocacy strategy rooted in sovereignty and representation.</p>
-            <div class="pillars">
-              <span>Representation</span><span>Sovereignty</span><span>Dignity</span>
-            </div>
-            <a href="/our-work/#dignified" class="text-link">Read case study →</a>
+            <div class="pillars"><span>Representation</span><span>Sovereignty</span><span>Dignity</span></div>
+            <a href="/our-work/#dignified-menstruation" class="btn-text" style="margin-left:0;">Read case study →</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- INSIGHTS PREVIEW -->
-    <section class="bordered">
+    <section class="section bordered">
       <div class="section-inner">
-        <span class="section-label">Insights</span>
+        <span class="eyebrow">Insights</span>
         <h2 class="section-title">Field notes from ethical strategy work.</h2>
 
         <div class="card-grid grid-3">
@@ -225,9 +190,9 @@
 
     <!-- CTA BAND -->
     <section class="cta-band bordered">
-      <h2>Ready to build something <span class="ethics">ethical?</span></h2>
+      <h2>Ready to build something <em>ethical?</em></h2>
       <p>Let's talk about what you're working on and whether we're the right fit. Every conversation starts with a free call.</p>
-      <a href="/pricing/" class="btn btn-primary">Get Started</a>
+      <a href="/pricing/" class="btn-primary">GET STARTED</a>
     </section>
   </main>
 
@@ -242,6 +207,9 @@
     <p>© 2026 Ethostrategy · Founder-led consulting · ethostrategy@gmail.com</p>
   </footer>
 
+  <script src="/assets/js/stars.js"></script>
+  <script src="/assets/js/logo.js"></script>
+  <script src="/assets/js/globe.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>

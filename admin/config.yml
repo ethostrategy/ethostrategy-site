@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: ethostrategy/ethostrategy-site
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Insights"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title",   name: "title",   widget: "string" }
+      - { label: "Date",    name: "date",    widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Body",    name: "body",    widget: "markdown" }

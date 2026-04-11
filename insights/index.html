@@ -11,31 +11,30 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="star-field"></canvas>
+  <canvas id="skyCanvas"></canvas>
 
   <nav class="nav">
-    <a href="/" class="nav-logo" aria-label="Ethostrategy home">
-      <canvas id="nav-logo-canvas" width="34" height="34"></canvas>
-      <span class="nav-logo-text"><span class="etho">etho</span><span class="strategy">strategy</span></span>
+    <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+      <canvas id="logoCanvas" width="480" height="60"></canvas>
     </a>
-    <ul class="nav-links">
-      <li><a href="/our-work/">Our Work</a></li>
-      <li><a href="/insights/">Insights</a></li>
-      <li><a href="/contact/">Contact</a></li>
-      <li><a href="/pricing/" class="btn btn-primary">Get Started</a></li>
-    </ul>
+    <div class="nav-links">
+      <a href="/our-work/">Our Work</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
   <main>
     <section class="page-intro">
       <div class="page-intro-inner">
-        <span class="section-label">Insights</span>
-        <h1>Field notes from <span class="ethics">ethical</span><br/>strategy work.</h1>
+        <span class="eyebrow">Insights</span>
+        <h1>Field notes from <em>ethical</em><br/>strategy work.</h1>
         <p>Essays, case notes, and observations from the work. No thought leadership. Just what we're learning, what we're wrestling with, and what's working.</p>
       </div>
     </section>
 
-    <section class="bordered">
+    <section class="section bordered">
       <div class="section-inner">
         <div class="card-grid grid-2">
           <a href="#" class="card post-card">
@@ -96,9 +95,9 @@
     </section>
 
     <section class="cta-band bordered">
-      <h2>Want to talk about <span class="ethics">your</span> work?</h2>
+      <h2>Want to talk about <em>your</em> work?</h2>
       <p>Every engagement starts with a conversation. No pitch deck required.</p>
-      <a href="/contact/" class="btn btn-primary">Get in touch</a>
+      <a href="/contact/" class="btn-primary">GET IN TOUCH</a>
     </section>
   </main>
 
@@ -113,6 +112,8 @@
     <p>© 2026 Ethostrategy · Founder-led consulting · ethostrategy@gmail.com</p>
   </footer>
 
+  <script src="/assets/js/stars.js"></script>
+  <script src="/assets/js/logo.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>

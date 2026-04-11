@@ -11,37 +11,36 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="star-field"></canvas>
+  <canvas id="skyCanvas"></canvas>
 
   <nav class="nav">
-    <a href="/" class="nav-logo" aria-label="Ethostrategy home">
-      <canvas id="nav-logo-canvas" width="34" height="34"></canvas>
-      <span class="nav-logo-text"><span class="etho">etho</span><span class="strategy">strategy</span></span>
+    <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+      <canvas id="logoCanvas" width="480" height="60"></canvas>
     </a>
-    <ul class="nav-links">
-      <li><a href="/our-work/">Our Work</a></li>
-      <li><a href="/insights/">Insights</a></li>
-      <li><a href="/contact/">Contact</a></li>
-      <li><a href="/pricing/" class="btn btn-primary">Get Started</a></li>
-    </ul>
+    <div class="nav-links">
+      <a href="/our-work/">Our Work</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
   <main>
     <section class="page-intro">
       <div class="page-intro-inner">
-        <span class="section-label">Contact</span>
-        <h1>Let's build something <span class="ethics">ethical.</span></h1>
+        <span class="eyebrow">Contact</span>
+        <h1>Let's <em>talk.</em></h1>
         <p>Tell us a little about your organization and what you're working on. We'll get back within two business days.</p>
       </div>
     </section>
 
-    <section class="bordered">
+    <section class="section bordered">
       <div class="section-inner">
         <div class="contact-wrap">
           <div class="contact-info">
             <h2>Every engagement starts with a conversation.</h2>
             <p>Short form, direct answers, no pitch decks. If we're a fit, we'll schedule a call. If we're not, we'll try to point you somewhere better.</p>
-            <p style="margin-top: 28px;">Email us directly at <a href="mailto:ethostrategy@gmail.com">ethostrategy@gmail.com</a></p>
+            <p style="margin-top:24px;">Email us directly at <a class="email" href="mailto:ethostrategy@gmail.com">ethostrategy@gmail.com</a></p>
           </div>
 
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/?success=true">
@@ -68,7 +67,7 @@
               <textarea id="message" name="message" required placeholder="A sentence or two is plenty."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn-primary">SEND MESSAGE</button>
           </form>
         </div>
       </div>
@@ -86,6 +85,8 @@
     <p>© 2026 Ethostrategy · Founder-led consulting · ethostrategy@gmail.com</p>
   </footer>
 
+  <script src="/assets/js/stars.js"></script>
+  <script src="/assets/js/logo.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>
