@@ -236,9 +236,7 @@ main, nav, footer, section { position: relative; z-index: 1; }
 }
 
 #globeCanvas {
-  width: 700px;
-  max-width: 100%;
-  max-height: calc(100vh - 260px);
+  width: min(700px, 100%, calc(100vh - 260px));
   aspect-ratio: 1 / 1;
 }
 
