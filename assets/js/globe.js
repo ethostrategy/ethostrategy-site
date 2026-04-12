@@ -3,12 +3,13 @@
    Drives the sky canvas draw each frame.
    ============================================================ */
 
+// Orbit speeds calmed by ~50% for a more meditative rhythm
 const PILLARS = [
-  { name: 'CONSENT',        speed: 0.48, rx: 1.40, ryR: 0.30, tilt: -0.18 },
-  { name: 'REPRESENTATION', speed: 0.35, rx: 1.28, ryR: 0.44, tilt:  0.56 },
-  { name: 'DIGNITY',        speed: 0.22, rx: 1.54, ryR: 0.20, tilt: -0.70 },
-  { name: 'SOVEREIGNTY',    speed: 0.60, rx: 1.20, ryR: 0.50, tilt:  1.14 },
-  { name: 'ACCOUNTABILITY', speed: 0.28, rx: 1.64, ryR: 0.26, tilt:  0.30 }
+  { name: 'CONSENT',        speed: 0.24, rx: 1.40, ryR: 0.30, tilt: -0.18 },
+  { name: 'REPRESENTATION', speed: 0.18, rx: 1.28, ryR: 0.44, tilt:  0.56 },
+  { name: 'DIGNITY',        speed: 0.11, rx: 1.54, ryR: 0.20, tilt: -0.70 },
+  { name: 'SOVEREIGNTY',    speed: 0.30, rx: 1.20, ryR: 0.50, tilt:  1.14 },
+  { name: 'ACCOUNTABILITY', speed: 0.14, rx: 1.64, ryR: 0.26, tilt:  0.30 }
 ];
 const ORBIT_COLORS = [
   [200, 215, 255],
@@ -97,16 +98,18 @@ function drawOrbit(ctx, cx, cy, rx, ryRatio, tilt, phase, colorRGB, pillarName) 
   const dpx = cx + dex * cosT - dey * sinT;
   const dpy = cy + dex * sinT + dey * cosT;
 
-  for (let i = 1; i <= 20; i++) {
-    const ta = (dotA - i * 0.052) % (Math.PI * 2);
+  // Longer, more visible comet tails — 36 segments spanning ~2 rad
+  const TRAIL_SEGS = 36;
+  for (let i = 1; i <= TRAIL_SEGS; i++) {
+    const ta = (dotA - i * 0.055) % (Math.PI * 2);
     const tex = rx * Math.cos(ta);
     const tey = ry * Math.sin(ta);
     const tpx = cx + tex * cosT - tey * sinT;
     const tpy = cy + tex * sinT + tey * cosT;
-    const frac = 1 - i / 20;
+    const frac = 1 - i / TRAIL_SEGS;
     ctx.beginPath();
-    ctx.arc(tpx, tpy, frac * 4, 0, Math.PI * 2);
-    ctx.fillStyle = base + (frac * 0.30) + ')';
+    ctx.arc(tpx, tpy, frac * 4.2, 0, Math.PI * 2);
+    ctx.fillStyle = base + (frac * 0.32) + ')';
     ctx.fill();
   }
 

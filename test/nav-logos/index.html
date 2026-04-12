@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nav Logo Variants — Ethostrategy Test</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,800&display=swap" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    /* Test-page-only styles */
+    .tp-wrap { padding: 120px 7% 80px; max-width: 1400px; margin: 0 auto; }
+    .tp-title { font-size: 36px; font-weight: 800; letter-spacing: -0.028em; margin-bottom: 12px; }
+    .tp-lede { font-size: 15px; color: var(--muted); margin-bottom: 48px; max-width: 700px; line-height: 1.7; font-weight: 300; }
+
+    .mock-nav {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .mock-nav .mock-links {
+      margin-left: auto;
+      display: flex;
+      gap: 36px;
+      margin-right: 36px;
+    }
+    .mock-nav .mock-links a {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    .variant-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sky);
+      font-weight: 500;
+      margin: 32px 0 10px;
+    }
+    .variant-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      max-width: 700px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Variant A: simple bars-only SVG, scaled for nav */
+    .logo-a { width: 300px; height: 38px; }
+    /* Variant B: bars + text as one SVG */
+    .logo-b { width: 300px; height: 38px; }
+    /* Variant C: minimalist — text-only wordmark with small accent */
+    .logo-c {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .logo-c .accent {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--sky);
+      box-shadow: 0 0 12px var(--sky);
+    }
+    .logo-c .etho { color: #fff; font-weight: 800; }
+    .logo-c .strategy { color: var(--periwinkle); font-weight: 300; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
+
+  <main id="main">
+    <div class="tp-wrap">
+      <h1 class="tp-title">Nav logo variants</h1>
+      <p class="tp-lede">A side-by-side of the current animated canvas logo and three static alternatives. Scroll and compare. This page is <code>noindex</code> and not linked from the main site.</p>
+
+      <!-- ============================================================
+           VARIANT 0: Current (animated canvas, for reference)
+           ============================================================ -->
+      <span class="variant-label">Variant 0 · Current (animated canvas)</span>
+      <p class="variant-note">What's live at ethostrategy.co right now. Five V-step bars with a comet running along each at different speeds, "etho" bold + "strategy" light periwinkle. Drawn to canvas at 60fps.</p>
+      <div class="mock-nav">
+        <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+          <canvas id="logoCanvas" width="480" height="60" role="img" aria-label="Ethostrategy"></canvas>
+        </a>
+        <div class="mock-links">
+          <a href="#">Our Work</a><a href="#">Insights</a><a href="#">Contact</a>
+        </div>
+        <a href="#" class="btn-cta">GET STARTED</a>
+      </div>
+
+      <!-- ============================================================
+           VARIANT A: Static SVG — bars + text, matches canvas aesthetic
+           ============================================================ -->
+      <span class="variant-label">Variant A · Static SVG (bars + text, matches canvas)</span>
+      <p class="variant-note">The same visual as Variant 0 but frozen as an SVG. Same colors, same V-step shape, text as real SVG text. No animation, no JS, renders instantly, reads perfectly in screen readers.</p>
+      <div class="mock-nav">
+        <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+          <svg class="logo-a" viewBox="0 0 480 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethostrategy">
+            <defs>
+              <linearGradient id="va0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#C8D7FF" stop-opacity="0"/><stop offset="70%" stop-color="#C8D7FF" stop-opacity="0.34"/><stop offset="100%" stop-color="#C8D7FF" stop-opacity="0.90"/></linearGradient>
+              <linearGradient id="va1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#B4C8F5" stop-opacity="0"/><stop offset="70%" stop-color="#B4C8F5" stop-opacity="0.34"/><stop offset="100%" stop-color="#B4C8F5" stop-opacity="0.90"/></linearGradient>
+              <linearGradient id="va2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#DCE6FF" stop-opacity="0"/><stop offset="70%" stop-color="#DCE6FF" stop-opacity="0.34"/><stop offset="100%" stop-color="#DCE6FF" stop-opacity="0.90"/></linearGradient>
+              <linearGradient id="va3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#A0B9F0" stop-opacity="0"/><stop offset="70%" stop-color="#A0B9F0" stop-opacity="0.34"/><stop offset="100%" stop-color="#A0B9F0" stop-opacity="0.90"/></linearGradient>
+              <linearGradient id="va4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#D2E1FF" stop-opacity="0"/><stop offset="70%" stop-color="#D2E1FF" stop-opacity="0.34"/><stop offset="100%" stop-color="#D2E1FF" stop-opacity="0.90"/></linearGradient>
+            </defs>
+            <!-- Bars: max width 40, start x=10, y 14..50 step 9 -->
+            <line x1="10" y1="14" x2="50"   y2="14" stroke="url(#va0)" stroke-width="2.6" stroke-linecap="round"/>
+            <line x1="10" y1="23" x2="42.8" y2="23" stroke="url(#va1)" stroke-width="2.6" stroke-linecap="round"/>
+            <line x1="10" y1="32" x2="36"   y2="32" stroke="url(#va2)" stroke-width="2.6" stroke-linecap="round"/>
+            <line x1="10" y1="41" x2="40"   y2="41" stroke="url(#va3)" stroke-width="2.6" stroke-linecap="round"/>
+            <line x1="10" y1="50" x2="47.2" y2="50" stroke="url(#va4)" stroke-width="2.6" stroke-linecap="round"/>
+            <!-- Comet dots at ends -->
+            <circle cx="50"   cy="14" r="2.4" fill="#C8D7FF"/>
+            <circle cx="42.8" cy="23" r="2.3" fill="#B4C8F5"/>
+            <circle cx="36"   cy="32" r="2.1" fill="#DCE6FF"/>
+            <circle cx="40"   cy="41" r="2.2" fill="#A0B9F0"/>
+            <circle cx="47.2" cy="50" r="2.4" fill="#D2E1FF"/>
+            <circle cx="50"   cy="14" r="0.9" fill="#ffffff"/>
+            <circle cx="42.8" cy="23" r="0.85" fill="#ffffff"/>
+            <circle cx="36"   cy="32" r="0.8" fill="#ffffff"/>
+            <circle cx="40"   cy="41" r="0.85" fill="#ffffff"/>
+            <circle cx="47.2" cy="50" r="0.9" fill="#ffffff"/>
+            <!-- Wordmark -->
+            <text x="68" y="40" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">etho</text>
+            <text x="134" y="40" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="300" fill="#6B7ACC" letter-spacing="-0.5">strategy</text>
+          </svg>
+        </a>
+        <div class="mock-links">
+          <a href="#">Our Work</a><a href="#">Insights</a><a href="#">Contact</a>
+        </div>
+        <a href="#" class="btn-cta">GET STARTED</a>
+      </div>
+
+      <!-- ============================================================
+           VARIANT B: Static SVG — solid bars, no gradient fade
+           ============================================================ -->
+      <span class="variant-label">Variant B · Static SVG (solid bars, cleaner)</span>
+      <p class="variant-note">Same layout as A but with solid-fill bars instead of fading gradients. Feels more graphic, less atmospheric. Reads better at very small sizes.</p>
+      <div class="mock-nav">
+        <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+          <svg class="logo-b" viewBox="0 0 480 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethostrategy">
+            <line x1="10" y1="14" x2="50"   y2="14" stroke="#C8D7FF" stroke-opacity="0.8" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="10" y1="23" x2="42.8" y2="23" stroke="#B4C8F5" stroke-opacity="0.8" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="10" y1="32" x2="36"   y2="32" stroke="#DCE6FF" stroke-opacity="0.8" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="10" y1="41" x2="40"   y2="41" stroke="#A0B9F0" stroke-opacity="0.8" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="10" y1="50" x2="47.2" y2="50" stroke="#D2E1FF" stroke-opacity="0.8" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="50"   cy="14" r="2.6" fill="#C8D7FF"/>
+            <circle cx="42.8" cy="23" r="2.5" fill="#B4C8F5"/>
+            <circle cx="36"   cy="32" r="2.3" fill="#DCE6FF"/>
+            <circle cx="40"   cy="41" r="2.4" fill="#A0B9F0"/>
+            <circle cx="47.2" cy="50" r="2.6" fill="#D2E1FF"/>
+            <text x="68" y="40" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">etho</text>
+            <text x="134" y="40" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="300" fill="#6B7ACC" letter-spacing="-0.5">strategy</text>
+          </svg>
+        </a>
+        <div class="mock-links">
+          <a href="#">Our Work</a><a href="#">Insights</a><a href="#">Contact</a>
+        </div>
+        <a href="#" class="btn-cta">GET STARTED</a>
+      </div>
+
+      <!-- ============================================================
+           VARIANT C: Minimalist — text only + small accent dot
+           ============================================================ -->
+      <span class="variant-label">Variant C · Minimalist (text-only + accent dot)</span>
+      <p class="variant-note">Stripped down. One glowing sky-blue dot + the wordmark. Loses the V-step bars entirely — the brand becomes the typography. Cleanest, lowest visual weight, closest to a typical minimalist consulting firm.</p>
+      <div class="mock-nav">
+        <a href="/" class="nav-brand logo-c" aria-label="Ethostrategy home">
+          <span class="accent"></span>
+          <span><span class="etho">etho</span><span class="strategy">strategy</span></span>
+        </a>
+        <div class="mock-links">
+          <a href="#">Our Work</a><a href="#">Insights</a><a href="#">Contact</a>
+        </div>
+        <a href="#" class="btn-cta">GET STARTED</a>
+      </div>
+
+      <!-- ============================================================
+           Notes
+           ============================================================ -->
+      <span class="variant-label">Notes</span>
+      <p class="variant-note">
+        <strong style="color:#fff;">Tradeoffs:</strong><br/>
+        • Variant 0 (current) — most distinctive, feels alive. Costs a 60fps canvas loop on every page.<br/>
+        • Variant A — keeps the atmospheric gradient feel, no animation. Reads identically to 0 when the comet dots happen to be at the ends.<br/>
+        • Variant B — simplest, cleanest, most bulletproof at small sizes.<br/>
+        • Variant C — safest / most generic. Loses the brand mark.<br/><br/>
+        To swap the main site's nav logo, change the <code>&lt;canvas id="logoCanvas"&gt;</code> element in each HTML file to the chosen SVG. Five minutes of find-and-replace.
+      </p>
+    </div>
+  </main>
+
+  <script src="/assets/js/stars.js"></script>
+  <script src="/assets/js/logo.js"></script>
+</body>
+</html>

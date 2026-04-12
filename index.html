@@ -30,11 +30,12 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="skyCanvas"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
 
   <nav class="nav">
     <a href="/" class="nav-brand" aria-label="Ethostrategy home">
-      <canvas id="logoCanvas" width="480" height="60"></canvas>
+      <canvas id="logoCanvas" width="480" height="60" role="img" aria-label="Ethostrategy"></canvas>
     </a>
     <div class="nav-links">
       <a href="/our-work/">Our Work</a>
@@ -44,7 +45,7 @@
     <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section class="hero">
       <div class="hero-left">
@@ -57,7 +58,7 @@
         </div>
       </div>
       <div class="hero-right">
-        <canvas id="globeCanvas" width="800" height="800"></canvas>
+        <canvas id="globeCanvas" width="800" height="800" role="img" aria-label="Illustration of a hexagonal globe with five orbiting points, each labeled with one of the ethical pillars: Consent, Representation, Dignity, Sovereignty, and Accountability."></canvas>
       </div>
     </section>
 
@@ -219,5 +220,19 @@
   <script src="/assets/js/logo.js"></script>
   <script src="/assets/js/globe.js"></script>
   <script src="/assets/js/main.js"></script>
+
+  <!-- Netlify Identity widget (for Decap CMS login redirect) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

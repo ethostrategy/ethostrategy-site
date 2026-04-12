@@ -26,11 +26,12 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="skyCanvas"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
 
   <nav class="nav">
     <a href="/" class="nav-brand" aria-label="Ethostrategy home">
-      <canvas id="logoCanvas" width="480" height="60"></canvas>
+      <canvas id="logoCanvas" width="480" height="60" role="img" aria-label="Ethostrategy"></canvas>
     </a>
     <div class="nav-links">
       <a href="/our-work/">Our Work</a>
@@ -40,7 +41,7 @@
     <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
-  <main>
+  <main id="main">
     <section class="page-intro">
       <div class="page-intro-inner">
         <span class="eyebrow">Contact</span>
@@ -58,7 +59,7 @@
             <p style="margin-top:24px;">Email us directly at <a class="email" href="mailto:ethostrategy@gmail.com">ethostrategy@gmail.com</a></p>
           </div>
 
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/?success=true">
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/?success=true">
             <input type="hidden" name="form-name" value="contact" />
             <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
@@ -84,6 +85,17 @@
 
             <button type="submit" class="btn-primary">SEND MESSAGE</button>
           </form>
+
+          <div id="contact-success" class="form-success" role="status" aria-live="polite">
+            <h3>Message received.</h3>
+            <p>Thanks for reaching out — Madhuri reads every message personally. Here's what happens next:</p>
+            <ol>
+              <li>We'll review your message within two business days.</li>
+              <li>If there's a fit, we'll reply with a link to book a 30-minute intro call — no pitch deck, no pressure.</li>
+              <li>If we're not the right team for what you need, we'll say so directly and try to point you somewhere better.</li>
+            </ol>
+            <a href="/" class="btn-ghost">← Back to home</a>
+          </div>
         </div>
       </div>
     </section>
@@ -103,5 +115,23 @@
   <script src="/assets/js/stars.js"></script>
   <script src="/assets/js/logo.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    // Swap form → success message when Netlify redirects here with ?success=true
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('success') === 'true') {
+        var form = document.getElementById('contact-form');
+        var success = document.getElementById('contact-success');
+        if (form && success) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          // Focus success state for screen readers
+          success.setAttribute('tabindex', '-1');
+          success.focus({ preventScroll: false });
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -26,11 +26,12 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <canvas id="skyCanvas"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
 
   <nav class="nav">
     <a href="/" class="nav-brand" aria-label="Ethostrategy home">
-      <canvas id="logoCanvas" width="480" height="60"></canvas>
+      <canvas id="logoCanvas" width="480" height="60" role="img" aria-label="Ethostrategy"></canvas>
     </a>
     <div class="nav-links">
       <a href="/our-work/">Our Work</a>
@@ -40,7 +41,7 @@
     <a href="/pricing/" class="btn-cta">GET STARTED</a>
   </nav>
 
-  <main>
+  <main id="main">
     <section class="page-intro">
       <div class="page-intro-inner">
         <a href="/our-work/" class="btn-text" style="margin-left:0; display:inline-block; margin-bottom:24px;">← All case studies</a>
