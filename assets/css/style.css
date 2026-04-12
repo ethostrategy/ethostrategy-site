@@ -71,8 +71,8 @@ main, nav, footer, section { position: relative; z-index: 1; }
 }
 
 .nav-brand canvas {
-  width: 240px;
-  height: 30px;
+  width: 300px;
+  height: 38px;
 }
 
 .nav-links {
@@ -210,8 +210,8 @@ main, nav, footer, section { position: relative; z-index: 1; }
 }
 
 #globeCanvas {
-  width: 500px;
-  height: 500px;
+  width: 620px;
+  height: 620px;
   max-width: 100%;
 }
 
@@ -763,10 +763,10 @@ footer .footer-nav a:hover { color: var(--sky); }
   .nav { padding: 16px 5%; }
   .nav-links { gap: 20px; margin-right: 16px; }
   .nav-links a { display: none; }
-  .nav-brand canvas { width: 200px; height: 28px; }
+  .nav-brand canvas { width: 220px; height: 28px; }
   .hero { grid-template-columns: 1fr; padding: 140px 5% 60px; }
   .hero-h1 { font-size: 40px; }
-  #globeCanvas { width: 340px; height: 340px; }
+  #globeCanvas { width: 360px; height: 360px; }
   section.section, .cta-band { padding: 80px 5%; }
   .section-title, .cta-band h2 { font-size: 34px; }
   .page-intro { padding: 150px 5% 60px; }
