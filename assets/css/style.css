@@ -229,10 +229,6 @@ main, nav, footer, section { position: relative; z-index: 1; }
 
 .hero-actions { display: flex; align-items: center; }
 
-.hero-left {
-  min-height: 330px; /* pin content block height so vertical centering matches the live version */
-}
-
 .hero-right {
   display: flex;
   justify-content: center;
@@ -241,8 +237,9 @@ main, nav, footer, section { position: relative; z-index: 1; }
 
 #globeCanvas {
   width: 700px;
-  height: 700px;
   max-width: 100%;
+  max-height: calc(100vh - 260px);
+  aspect-ratio: 1 / 1;
 }
 
 /* ============================================================
@@ -968,7 +965,7 @@ footer .footer-nav a:hover { color: var(--sky); }
   .nav-wordmark { font-size: 20px; }
   .hero { grid-template-columns: 1fr; padding: 140px 5% 60px; }
   .hero-h1 { font-size: 40px; }
-  #globeCanvas { width: 360px; height: 360px; }
+  #globeCanvas { width: 360px; max-height: none; }
   section.section, .cta-band { padding: 80px 5%; }
   .section-title, .cta-band h2 { font-size: 34px; }
   .page-intro { padding: 150px 5% 60px; }
