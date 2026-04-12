@@ -77,6 +77,43 @@
     }
     .logo-c .etho { color: #fff; font-weight: 800; }
     .logo-c .strategy { color: var(--periwinkle); font-weight: 300; }
+
+    /* Square mark comparison grid */
+    .square-wall {
+      display: grid;
+      grid-template-columns: 150px repeat(4, 1fr);
+      gap: 20px 28px;
+      align-items: center;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.015);
+      margin-bottom: 20px;
+    }
+    .square-wall + .square-wall { margin-top: 0; }
+    .square-wall .row-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--periwinkle);
+      font-weight: 500;
+    }
+    .square-wall .cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .square-wall .cell-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .mark { display: block; border-radius: 12px; }
+    .mark-32  { width: 32px;  height: 32px;  border-radius: 6px; }
+    .mark-64  { width: 64px;  height: 64px;  border-radius: 12px; }
+    .mark-128 { width: 128px; height: 128px; border-radius: 22px; }
+    .mark-192 { width: 192px; height: 192px; border-radius: 32px; }
   </style>
 </head>
 <body>
@@ -188,6 +225,146 @@
           <a href="#">Our Work</a><a href="#">Insights</a><a href="#">Contact</a>
         </div>
         <a href="#" class="btn-cta">GET STARTED</a>
+      </div>
+
+      <!-- ============================================================
+           SQUARE MARKS — no wordmark, for favicons / avatars / app icons
+           ============================================================ -->
+      <h2 class="tp-title" style="margin-top:80px;">Square marks (no text)</h2>
+      <p class="tp-lede">Each mark rendered at four sizes to simulate favicon (32px), small icon (64px), large icon (128px), and hero (192px). All designs derive from the same 5 V-step bar language.</p>
+
+      <!-- ============================================================
+           SQUARE A — Indigo wash background + gradient bars
+           (matches the current favicon.svg aesthetic)
+           ============================================================ -->
+      <span class="variant-label">Square A · Indigo wash + gradient bars</span>
+      <p class="variant-note">The current favicon. 5 bars with gradient fades, rounded square indigo background. Most atmospheric, matches the hero globe's color temperature. Can feel soft at 32px.</p>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+        <defs>
+          <radialGradient id="sqA-bg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#2B18BC" stop-opacity="0.55"/><stop offset="100%" stop-color="#08091a"/></radialGradient>
+          <linearGradient id="sqA-t0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#C8D7FF" stop-opacity="0"/><stop offset="100%" stop-color="#C8D7FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="sqA-t1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#B4C8F5" stop-opacity="0"/><stop offset="100%" stop-color="#B4C8F5" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="sqA-t2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#DCE6FF" stop-opacity="0"/><stop offset="100%" stop-color="#DCE6FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="sqA-t3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#A0B9F0" stop-opacity="0"/><stop offset="100%" stop-color="#A0B9F0" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="sqA-t4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#D2E1FF" stop-opacity="0"/><stop offset="100%" stop-color="#D2E1FF" stop-opacity="0.9"/></linearGradient>
+
+          <symbol id="squareA" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="12" fill="url(#sqA-bg)"/>
+            <line x1="12" y1="14" x2="52"   y2="14" stroke="url(#sqA-t0)" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="12" y1="23" x2="44.8" y2="23" stroke="url(#sqA-t1)" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="12" y1="32" x2="38"   y2="32" stroke="url(#sqA-t2)" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="12" y1="41" x2="42"   y2="41" stroke="url(#sqA-t3)" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="12" y1="50" x2="49.2" y2="50" stroke="url(#sqA-t4)" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="52"   cy="14" r="2.6" fill="#C8D7FF"/>
+            <circle cx="44.8" cy="23" r="2.4" fill="#B4C8F5"/>
+            <circle cx="38"   cy="32" r="2.2" fill="#DCE6FF"/>
+            <circle cx="42"   cy="41" r="2.3" fill="#A0B9F0"/>
+            <circle cx="49.2" cy="50" r="2.5" fill="#D2E1FF"/>
+            <circle cx="52"   cy="14" r="1" fill="#fff"/>
+            <circle cx="44.8" cy="23" r="0.9" fill="#fff"/>
+            <circle cx="38"   cy="32" r="0.8" fill="#fff"/>
+            <circle cx="42"   cy="41" r="0.9" fill="#fff"/>
+            <circle cx="49.2" cy="50" r="0.95" fill="#fff"/>
+          </symbol>
+
+          <!-- Square B: solid bars, no gradient -->
+          <symbol id="squareB" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="12" fill="#08091a"/>
+            <rect width="64" height="64" rx="12" fill="#2B18BC" fill-opacity="0.22"/>
+            <line x1="12" y1="14" x2="52"   y2="14" stroke="#C8D7FF" stroke-opacity="0.9" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="12" y1="23" x2="44.8" y2="23" stroke="#B4C8F5" stroke-opacity="0.9" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="12" y1="32" x2="38"   y2="32" stroke="#DCE6FF" stroke-opacity="0.9" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="12" y1="41" x2="42"   y2="41" stroke="#A0B9F0" stroke-opacity="0.9" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="12" y1="50" x2="49.2" y2="50" stroke="#D2E1FF" stroke-opacity="0.9" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="52"   cy="14" r="3" fill="#C8D7FF"/>
+            <circle cx="44.8" cy="23" r="2.8" fill="#B4C8F5"/>
+            <circle cx="38"   cy="32" r="2.6" fill="#DCE6FF"/>
+            <circle cx="42"   cy="41" r="2.7" fill="#A0B9F0"/>
+            <circle cx="49.2" cy="50" r="2.9" fill="#D2E1FF"/>
+          </symbol>
+
+          <!-- Square C: transparent bg, bars only — for flexible placement -->
+          <symbol id="squareC" viewBox="0 0 64 64">
+            <line x1="12" y1="14" x2="52"   y2="14" stroke="#C8D7FF" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="23" x2="44.8" y2="23" stroke="#B4C8F5" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="32" x2="38"   y2="32" stroke="#DCE6FF" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="41" x2="42"   y2="41" stroke="#A0B9F0" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="50" x2="49.2" y2="50" stroke="#D2E1FF" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="52"   cy="14" r="3.4" fill="#C8D7FF"/>
+            <circle cx="44.8" cy="23" r="3.2" fill="#B4C8F5"/>
+            <circle cx="38"   cy="32" r="3.0" fill="#DCE6FF"/>
+            <circle cx="42"   cy="41" r="3.1" fill="#A0B9F0"/>
+            <circle cx="49.2" cy="50" r="3.3" fill="#D2E1FF"/>
+          </symbol>
+
+          <!-- Square D: hex frame + bars, nods to the hero globe -->
+          <radialGradient id="sqD-bg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#2B18BC" stop-opacity="0.5"/><stop offset="100%" stop-color="#08091a"/></radialGradient>
+          <symbol id="squareD" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="12" fill="url(#sqD-bg)"/>
+            <polygon points="32,8 52,20 52,44 32,56 12,44 12,20" fill="none" stroke="#A4BEF2" stroke-opacity="0.45" stroke-width="1.1"/>
+            <line x1="18" y1="20" x2="46"   y2="20" stroke="#C8D7FF" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="27" x2="40.9" y2="27" stroke="#B4C8F5" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="34" x2="36.2" y2="34" stroke="#DCE6FF" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="41" x2="39"   y2="41" stroke="#A0B9F0" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="48" x2="44"   y2="48" stroke="#D2E1FF" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="46"   cy="20" r="1.9" fill="#C8D7FF"/>
+            <circle cx="40.9" cy="27" r="1.8" fill="#B4C8F5"/>
+            <circle cx="36.2" cy="34" r="1.7" fill="#DCE6FF"/>
+            <circle cx="39"   cy="41" r="1.8" fill="#A0B9F0"/>
+            <circle cx="44"   cy="48" r="1.9" fill="#D2E1FF"/>
+          </symbol>
+        </defs>
+      </svg>
+
+      <div class="square-wall">
+        <div class="row-label">Square A<br/><span style="color:var(--muted); font-weight:300; letter-spacing:0;">Indigo wash + gradient</span></div>
+        <div class="cell"><svg class="mark mark-32"><use href="#squareA"/></svg><span class="cell-label">32px</span></div>
+        <div class="cell"><svg class="mark mark-64"><use href="#squareA"/></svg><span class="cell-label">64px</span></div>
+        <div class="cell"><svg class="mark mark-128"><use href="#squareA"/></svg><span class="cell-label">128px</span></div>
+        <div class="cell"><svg class="mark mark-192"><use href="#squareA"/></svg><span class="cell-label">192px</span></div>
+      </div>
+
+      <!-- ============================================================
+           SQUARE B — Solid bars
+           ============================================================ -->
+      <span class="variant-label">Square B · Solid bars (no gradient fade)</span>
+      <p class="variant-note">Same layout, solid strokes. Reads crisper at 32px than Square A. Feels more graphic, less atmospheric.</p>
+
+      <div class="square-wall">
+        <div class="row-label">Square B<br/><span style="color:var(--muted); font-weight:300; letter-spacing:0;">Solid strokes</span></div>
+        <div class="cell"><svg class="mark mark-32"><use href="#squareB"/></svg><span class="cell-label">32px</span></div>
+        <div class="cell"><svg class="mark mark-64"><use href="#squareB"/></svg><span class="cell-label">64px</span></div>
+        <div class="cell"><svg class="mark mark-128"><use href="#squareB"/></svg><span class="cell-label">128px</span></div>
+        <div class="cell"><svg class="mark mark-192"><use href="#squareB"/></svg><span class="cell-label">192px</span></div>
+      </div>
+
+      <!-- ============================================================
+           SQUARE C — Transparent bg, bars only
+           ============================================================ -->
+      <span class="variant-label">Square C · Transparent background (bars only)</span>
+      <p class="variant-note">No container, just the bars. Most flexible — drops onto any surface. Risky as a favicon because browsers often render favicons against light tab backgrounds.</p>
+
+      <div class="square-wall" style="background: rgba(164,190,242,0.04);">
+        <div class="row-label">Square C<br/><span style="color:var(--muted); font-weight:300; letter-spacing:0;">No background</span></div>
+        <div class="cell"><svg class="mark mark-32"><use href="#squareC"/></svg><span class="cell-label">32px</span></div>
+        <div class="cell"><svg class="mark mark-64"><use href="#squareC"/></svg><span class="cell-label">64px</span></div>
+        <div class="cell"><svg class="mark mark-128"><use href="#squareC"/></svg><span class="cell-label">128px</span></div>
+        <div class="cell"><svg class="mark mark-192"><use href="#squareC"/></svg><span class="cell-label">192px</span></div>
+      </div>
+
+      <!-- ============================================================
+           SQUARE D — Hex frame + bars (nods to hero globe)
+           ============================================================ -->
+      <span class="variant-label">Square D · Hex frame + bars (nods to hero globe)</span>
+      <p class="variant-note">The bars sit inside the same hexagonal frame as the hero globe. Ties the favicon visually to the landing page. A bit busier at 32px.</p>
+
+      <div class="square-wall">
+        <div class="row-label">Square D<br/><span style="color:var(--muted); font-weight:300; letter-spacing:0;">Hex + bars</span></div>
+        <div class="cell"><svg class="mark mark-32"><use href="#squareD"/></svg><span class="cell-label">32px</span></div>
+        <div class="cell"><svg class="mark mark-64"><use href="#squareD"/></svg><span class="cell-label">64px</span></div>
+        <div class="cell"><svg class="mark mark-128"><use href="#squareD"/></svg><span class="cell-label">128px</span></div>
+        <div class="cell"><svg class="mark mark-192"><use href="#squareD"/></svg><span class="cell-label">192px</span></div>
       </div>
 
       <!-- ============================================================
