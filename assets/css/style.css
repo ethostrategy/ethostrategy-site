@@ -28,11 +28,12 @@ body {
   min-height: 100vh;
 }
 
-/* Prevent widow/orphan words on headings and lead text */
-h1, h2, h3, .section-title, .hero-h1, .cta-band h2 {
+/* Prevent widow/orphan words — scoped to non-hero elements only
+   so the hero vertical position isn't affected */
+.section-title, .cta-band h2, .page-intro h1, .not-found h1 {
   text-wrap: balance;
 }
-p, .section-lede, .hero-sub {
+.section-lede, .page-intro p, .not-found p {
   text-wrap: pretty;
 }
 
@@ -228,6 +229,10 @@ main, nav, footer, section { position: relative; z-index: 1; }
 
 .hero-actions { display: flex; align-items: center; }
 
+.hero-left {
+  min-height: 330px; /* pin content block height so vertical centering matches the live version */
+}
+
 .hero-right {
   display: flex;
   justify-content: center;
@@ -235,8 +240,8 @@ main, nav, footer, section { position: relative; z-index: 1; }
 }
 
 #globeCanvas {
-  width: 640px;
-  height: 640px;
+  width: 700px;
+  height: 700px;
   max-width: 100%;
 }
 
