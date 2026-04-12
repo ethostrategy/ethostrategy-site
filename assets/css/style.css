@@ -218,8 +218,8 @@ main, nav, footer, section { position: relative; z-index: 1; }
 }
 
 #globeCanvas {
-  width: 780px;
-  height: 780px;
+  width: 500px;
+  height: 500px;
   max-width: 100%;
 }
 
@@ -945,7 +945,7 @@ footer .footer-nav a:hover { color: var(--sky); }
   .nav-brand canvas { width: 220px; height: 28px; }
   .hero { grid-template-columns: 1fr; padding: 140px 5% 60px; }
   .hero-h1 { font-size: 40px; }
-  #globeCanvas { width: 380px; height: 380px; }
+  #globeCanvas { width: 340px; height: 340px; }
   section.section, .cta-band { padding: 80px 5%; }
   .section-title, .cta-band h2 { font-size: 34px; }
   .page-intro { padding: 150px 5% 60px; }
