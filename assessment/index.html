@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etho·0 — Free Self-Assessment | Ethostrategy</title>
+  <meta name="description" content="See where your organization stands on ethical practice. 15 questions, 5 pillars, your EthoScore in minutes. Free and no account required." />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ethostrategy" />
+  <meta property="og:title" content="Etho·0 — Free Self-Assessment | Ethostrategy" />
+  <meta property="og:description" content="See where your organization stands on ethical practice. 15 questions, 5 pillars, your EthoScore in minutes." />
+  <meta property="og:url" content="https://ethostrategy.co/assessment/" />
+  <meta property="og:image" content="https://ethostrategy.co/assets/brand/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Etho·0 — Free Self-Assessment | Ethostrategy" />
+  <meta name="twitter:description" content="See where your organization stands on ethical practice. 15 questions, 5 pillars, your EthoScore in minutes." />
+  <meta name="twitter:image" content="https://ethostrategy.co/assets/brand/og-image.png" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,800&display=swap" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    /* ============================================================
+       Assessment-specific styles
+       ============================================================ */
+    .assessment-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin-bottom: 48px;
+    }
+
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .progress-step {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-lo);
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: default;
+    }
+
+    .progress-step.active {
+      color: var(--sky);
+    }
+
+    .progress-step.completed {
+      color: var(--periwinkle);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(107, 122, 204, 0.15);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--periwinkle), var(--sky));
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    /* Pillar section */
+    .pillar-section {
+      display: none;
+    }
+
+    .pillar-section.active {
+      display: block;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pillar-header {
+      margin-bottom: 40px;
+    }
+
+    .pillar-num {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--sky);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pillar-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.024em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .pillar-header p {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* Question card */
+    .question-card {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .question-card:first-of-type {
+      border-top: none;
+    }
+
+    .question-text {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Rating scale */
+    .rating-scale {
+      display: flex;
+      gap: 10px;
+    }
+
+    .rating-btn {
+      flex: 1;
+      padding: 12px 0;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-br);
+      border-radius: 10px;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .rating-btn:hover {
+      border-color: rgba(164, 190, 242, 0.35);
+      background: rgba(164, 190, 242, 0.06);
+      color: var(--white);
+    }
+
+    .rating-btn.selected {
+      border-color: var(--sky);
+      background: rgba(164, 190, 242, 0.12);
+      color: var(--white);
+      box-shadow: 0 0 16px rgba(164, 190, 242, 0.12);
+    }
+
+    .rating-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .rating-labels span {
+      font-size: 10px;
+      color: var(--muted-lo);
+      letter-spacing: 0.06em;
+      font-weight: 300;
+    }
+
+    /* Navigation buttons */
+    .assessment-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .assessment-nav .btn-ghost,
+    .assessment-nav .btn-primary {
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .btn-disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .step-counter {
+      font-size: 12px;
+      color: var(--muted-lo);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    /* Email gate */
+    .email-gate {
+      display: none;
+      text-align: center;
+    }
+
+    .email-gate.active {
+      display: block;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .email-gate h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.028em;
+      margin-bottom: 14px;
+    }
+
+    .email-gate h2 em {
+      color: var(--sky);
+      font-style: italic;
+    }
+
+    .email-gate p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .email-form {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .email-form .field {
+      margin-bottom: 18px;
+    }
+
+    .email-form .field input {
+      width: 100%;
+    }
+
+    .email-form .btn-primary {
+      width: 100%;
+    }
+
+    .email-note {
+      font-size: 12px;
+      color: var(--muted-lo);
+      margin-top: 14px;
+      font-weight: 300;
+    }
+
+    /* Results */
+    .results-section {
+      display: none;
+    }
+
+    .results-section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .ethoscore-display {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .score-ring {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .score-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .score-ring .track {
+      fill: none;
+      stroke: rgba(107, 122, 204, 0.15);
+      stroke-width: 6;
+    }
+
+    .score-ring .fill {
+      fill: none;
+      stroke: url(#scoreGradient);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 452;
+      stroke-dashoffset: 452;
+      transition: stroke-dashoffset 1.2s ease;
+    }
+
+    .score-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .score-value .number {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .score-value .label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .score-interpretation {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Pillar breakdown */
+    .pillar-breakdown {
+      margin-bottom: 48px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .breakdown-row:first-child {
+      border-top: none;
+    }
+
+    .breakdown-label {
+      flex: 0 0 160px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .breakdown-bar-wrap {
+      flex: 1;
+      height: 8px;
+      background: rgba(107, 122, 204, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .breakdown-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--periwinkle), var(--sky));
+      border-radius: 8px;
+      transition: width 0.8s ease;
+      width: 0%;
+    }
+
+    .breakdown-score {
+      flex: 0 0 48px;
+      text-align: right;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--sky);
+    }
+
+    /* Full assessment note */
+    .full-assessment-note {
+      text-align: center;
+      padding: 32px;
+      border: 1px solid rgba(107, 122, 204, 0.18);
+      border-radius: 14px;
+      background: rgba(107, 122, 204, 0.04);
+      margin-bottom: 40px;
+    }
+
+    .full-assessment-note p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+
+    .full-assessment-note strong {
+      color: var(--sky);
+      font-weight: 600;
+    }
+
+    /* Results CTA */
+    .results-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .results-cta p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .results-cta .btn-primary {
+      margin-right: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .pillar-header h2 { font-size: 26px; }
+      .email-gate h2 { font-size: 28px; }
+      .rating-scale { gap: 6px; }
+      .rating-btn { padding: 10px 0; font-size: 13px; }
+      .progress-step { font-size: 8px; letter-spacing: 0.08em; }
+      .breakdown-label { flex: 0 0 110px; font-size: 11px; }
+      .score-ring { width: 150px; height: 150px; }
+      .score-value .number { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand" aria-label="Ethostrategy home">
+      <span class="nav-wordmark"><span class="etho">etho</span><span class="strategy">strategy</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/our-work/">Approach</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a href="/pricing/" class="btn-cta">GET STARTED</a>
+  </nav>
+
+  <main id="main">
+    <section class="page-intro">
+      <div class="page-intro-inner">
+        <span class="eyebrow">Etho·0</span>
+        <h1>How ethical is your <em>strategy?</em></h1>
+        <p>15 questions across five pillars. Get your EthoScore in minutes.</p>
+      </div>
+    </section>
+
+    <section class="section bordered">
+      <div class="assessment-container">
+
+        <!-- Progress bar -->
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-steps">
+            <span class="progress-step active" data-step="0">Consent</span>
+            <span class="progress-step" data-step="1">Representation</span>
+            <span class="progress-step" data-step="2">Dignity</span>
+            <span class="progress-step" data-step="3">Sovereignty</span>
+            <span class="progress-step" data-step="4">Accountability</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- PILLAR 1: CONSENT -->
+        <div class="pillar-section active" data-pillar="consent">
+          <div class="pillar-header">
+            <div class="pillar-num">01 — Consent</div>
+            <h2>Freely given, fully informed, always revocable.</h2>
+            <p>How well does your organization protect the right to say yes, say no, and change their mind?</p>
+          </div>
+
+          <div class="question-card" data-question="c1">
+            <div class="question-text">Do the people affected by your work give informed, voluntary consent before participating?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="c2">
+            <div class="question-text">Can participants withdraw at any time without penalty or loss of access?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="c3">
+            <div class="question-text">Are consent materials accessible across languages, literacy levels, and cultural contexts?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+        </div>
+
+        <!-- PILLAR 2: REPRESENTATION -->
+        <div class="pillar-section" data-pillar="representation">
+          <div class="pillar-header">
+            <div class="pillar-num">02 — Representation</div>
+            <h2>Those closest to the issue drive the work.</h2>
+            <p>How meaningfully are affected communities included in shaping decisions?</p>
+          </div>
+
+          <div class="question-card" data-question="r1">
+            <div class="question-text">Are people with lived experience of the issue in decision-making roles — not just advisory?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="r2">
+            <div class="question-text">Is representation maintained across the full lifecycle of your work, not just at launch?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="r3">
+            <div class="question-text">Are community representatives compensated at parity with external team members?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+        </div>
+
+        <!-- PILLAR 3: DIGNITY -->
+        <div class="pillar-section" data-pillar="dignity">
+          <div class="pillar-header">
+            <div class="pillar-num">03 — Dignity</div>
+            <h2>Honored before, during, and after the work.</h2>
+            <p>How well does your organization protect the humanity and agency of those it serves?</p>
+          </div>
+
+          <div class="question-card" data-question="d1">
+            <div class="question-text">Does your organization conduct on-the-ground landscape analysis before designing solutions?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="d2">
+            <div class="question-text">Are safeguarding policies in place to protect against exploitation, abuse, and psychological harm?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="d3">
+            <div class="question-text">Is all media, imagery, and storytelling created without extracting from the communities you serve?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+        </div>
+
+        <!-- PILLAR 4: SOVEREIGNTY -->
+        <div class="pillar-section" data-pillar="sovereignty">
+          <div class="pillar-header">
+            <div class="pillar-num">04 — Sovereignty</div>
+            <h2>Communities keep control over their own futures.</h2>
+            <p>How well does your organization respect the self-determination of the people it works with?</p>
+          </div>
+
+          <div class="question-card" data-question="s1">
+            <div class="question-text">Do communities retain control over their own data, land, resources, and cultural heritage?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="s2">
+            <div class="question-text">Does your exit strategy leave capacity in place rather than dependence?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="s3">
+            <div class="question-text">Can communities pause, modify, or terminate the engagement at any point?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+        </div>
+
+        <!-- PILLAR 5: ACCOUNTABILITY -->
+        <div class="pillar-section" data-pillar="accountability">
+          <div class="pillar-header">
+            <div class="pillar-num">05 — Accountability</div>
+            <h2>Measurable commitments, public follow-through.</h2>
+            <p>How honestly does your organization track, report, and repair?</p>
+          </div>
+
+          <div class="question-card" data-question="a1">
+            <div class="question-text">Is there a clear, documented chain of responsibility for outcomes and harms?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="a2">
+            <div class="question-text">Does your public reporting include failures and course corrections — not just wins?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+
+          <div class="question-card" data-question="a3">
+            <div class="question-text">Are grievance mechanisms accessible to affected communities with committed response timelines?</div>
+            <div class="rating-scale">
+              <button class="rating-btn" data-value="1">1</button>
+              <button class="rating-btn" data-value="2">2</button>
+              <button class="rating-btn" data-value="3">3</button>
+              <button class="rating-btn" data-value="4">4</button>
+              <button class="rating-btn" data-value="5">5</button>
+            </div>
+            <div class="rating-labels"><span>Not at all</span><span>Fully in place</span></div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="assessment-nav" id="assessmentNav">
+          <button class="btn-ghost btn-disabled" id="prevBtn" onclick="navigate(-1)">← Back</button>
+          <span class="step-counter" id="stepCounter">1 of 5</span>
+          <button class="btn-primary" id="nextBtn" onclick="navigate(1)">Next →</button>
+        </div>
+
+        <!-- EMAIL GATE -->
+        <div class="email-gate" id="emailGate">
+          <h2>Your score is <em>ready.</em></h2>
+          <p>Enter your email to see your EthoScore and per-pillar breakdown.</p>
+
+          <div class="email-form">
+            <div class="field">
+              <label for="gate-email">Email</label>
+              <input type="email" id="gate-email" name="email" required placeholder="you@organization.org" />
+            </div>
+            <button class="btn-primary" id="revealBtn" onclick="submitAssessment()">SEE MY SCORE</button>
+            <p class="email-note">We'll never spam you. This helps us understand who's using the tool.</p>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="results-section" id="resultsSection">
+          <div class="ethoscore-display">
+            <div class="score-ring">
+              <svg viewBox="0 0 160 160">
+                <defs>
+                  <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#6B7ACC" />
+                    <stop offset="100%" stop-color="#A4BEF2" />
+                  </linearGradient>
+                </defs>
+                <circle class="track" cx="80" cy="80" r="72" />
+                <circle class="fill" id="scoreCircle" cx="80" cy="80" r="72" />
+              </svg>
+              <div class="score-value">
+                <div class="number" id="scoreNumber">0</div>
+                <div class="label">EthoScore</div>
+              </div>
+            </div>
+            <p class="score-interpretation" id="scoreInterpretation"></p>
+          </div>
+
+          <div class="pillar-breakdown">
+            <div class="breakdown-row">
+              <span class="breakdown-label">Consent</span>
+              <div class="breakdown-bar-wrap"><div class="breakdown-bar" id="bar-consent"></div></div>
+              <span class="breakdown-score" id="score-consent">—</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Representation</span>
+              <div class="breakdown-bar-wrap"><div class="breakdown-bar" id="bar-representation"></div></div>
+              <span class="breakdown-score" id="score-representation">—</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Dignity</span>
+              <div class="breakdown-bar-wrap"><div class="breakdown-bar" id="bar-dignity"></div></div>
+              <span class="breakdown-score" id="score-dignity">—</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Sovereignty</span>
+              <div class="breakdown-bar-wrap"><div class="breakdown-bar" id="bar-sovereignty"></div></div>
+              <span class="breakdown-score" id="score-sovereignty">—</span>
+            </div>
+            <div class="breakdown-row">
+              <span class="breakdown-label">Accountability</span>
+              <div class="breakdown-bar-wrap"><div class="breakdown-bar" id="bar-accountability"></div></div>
+              <span class="breakdown-score" id="score-accountability">—</span>
+            </div>
+          </div>
+
+          <div class="full-assessment-note">
+            <p>This is a simplified self-assessment. The full evaluation covers <strong>50 dimensions</strong> across all five pillars — and includes organizational health. <a href="/pricing/" style="color: var(--sky); border-bottom: 1px solid rgba(164,190,242,0.35);">Explore our tiers →</a></p>
+          </div>
+
+          <div class="results-cta">
+            <p>Ready to go deeper?</p>
+            <a href="/contact/" class="btn-primary">TALK TO US</a>
+            <a href="/assessment/" class="btn-ghost" onclick="location.reload(); return false;">RETAKE</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <ul class="footer-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/our-work/">Approach</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/pricing/">Pricing</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/ethostrategy" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/ethostrategy/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="footer-legal">
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms & Conditions</a>
+    </div>
+    <p>© 2026 Ethostrategy · ethostrategy@gmail.com</p>
+  </footer>
+
+  <script src="/assets/js/stars.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+  <script>
+  /* ============================================================
+     Etho·0 Assessment Engine
+     ============================================================ */
+  (function () {
+    'use strict';
+
+    var pillars = ['consent', 'representation', 'dignity', 'sovereignty', 'accountability'];
+    var currentStep = 0;
+    var answers = {};
+
+    // Bind rating buttons
+    document.querySelectorAll('.rating-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = this.closest('.question-card');
+        var qId = card.getAttribute('data-question');
+        var val = parseInt(this.getAttribute('data-value'));
+
+        // Deselect siblings
+        card.querySelectorAll('.rating-btn').forEach(function (b) { b.classList.remove('selected'); });
+        this.classList.add('selected');
+        answers[qId] = val;
+      });
+    });
+
+    // Navigation
+    window.navigate = function (dir) {
+      var nextStep = currentStep + dir;
+
+      // If going forward from last pillar → email gate
+      if (nextStep > 4) {
+        // Validate all questions answered
+        var allAnswered = true;
+        document.querySelectorAll('.question-card').forEach(function (card) {
+          var qId = card.getAttribute('data-question');
+          if (!answers[qId]) allAnswered = false;
+        });
+
+        if (!allAnswered) {
+          // Find first unanswered on current pillar
+          var currentPillar = document.querySelector('.pillar-section.active');
+          var missing = currentPillar.querySelector('.question-card:not(:has(.rating-btn.selected))');
+          if (missing) {
+            missing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            missing.style.outline = '2px solid rgba(164, 190, 242, 0.4)';
+            setTimeout(function () { missing.style.outline = 'none'; }, 2000);
+          }
+          return;
+        }
+
+        showEmailGate();
+        return;
+      }
+
+      if (nextStep < 0) return;
+
+      // Validate current pillar is complete before advancing
+      if (dir > 0) {
+        var currentPillar = document.querySelector('.pillar-section.active');
+        var currentCards = currentPillar.querySelectorAll('.question-card');
+        var complete = true;
+        currentCards.forEach(function (card) {
+          if (!answers[card.getAttribute('data-question')]) complete = false;
+        });
+        if (!complete) {
+          var missing = currentPillar.querySelector('.question-card:not(:has(.rating-btn.selected))');
+          if (missing) {
+            missing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            missing.style.outline = '2px solid rgba(164, 190, 242, 0.4)';
+            setTimeout(function () { missing.style.outline = 'none'; }, 2000);
+          }
+          return;
+        }
+      }
+
+      currentStep = nextStep;
+      updateView();
+    };
+
+    function updateView() {
+      // Update pillar sections
+      document.querySelectorAll('.pillar-section').forEach(function (s, i) {
+        s.classList.toggle('active', i === currentStep);
+      });
+
+      // Update progress
+      document.querySelectorAll('.progress-step').forEach(function (s, i) {
+        s.classList.toggle('active', i === currentStep);
+        s.classList.toggle('completed', i < currentStep);
+      });
+
+      var pct = ((currentStep) / 5) * 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+
+      // Update nav
+      document.getElementById('stepCounter').textContent = (currentStep + 1) + ' of 5';
+      document.getElementById('prevBtn').classList.toggle('btn-disabled', currentStep === 0);
+      document.getElementById('nextBtn').textContent = currentStep === 4 ? 'See results →' : 'Next →';
+
+      // Scroll to top of section
+      document.getElementById('progressWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function showEmailGate() {
+      document.querySelectorAll('.pillar-section').forEach(function (s) { s.classList.remove('active'); });
+      document.getElementById('assessmentNav').style.display = 'none';
+      document.getElementById('progressFill').style.width = '100%';
+      document.querySelectorAll('.progress-step').forEach(function (s) { s.classList.add('completed'); s.classList.remove('active'); });
+      document.getElementById('emailGate').classList.add('active');
+      document.getElementById('emailGate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function calculateScores() {
+      var pillarScores = {};
+      pillars.forEach(function (p) {
+        var prefix = p.charAt(0);
+        var sum = 0;
+        var count = 0;
+        for (var key in answers) {
+          if (key.charAt(0) === prefix) {
+            sum += answers[key];
+            count++;
+          }
+        }
+        pillarScores[p] = count > 0 ? Math.round((sum / count) * 10) / 10 : 0;
+      });
+
+      var total = 0;
+      var n = 0;
+      pillars.forEach(function (p) {
+        total += pillarScores[p];
+        n++;
+      });
+      var ethoScore = Math.round((total / n) * 10) / 10;
+
+      return { pillarScores: pillarScores, ethoScore: ethoScore };
+    }
+
+    function getInterpretation(score) {
+      if (score >= 4.5) return 'Exceptional. Your organization demonstrates deeply embedded ethical practices across all pillars.';
+      if (score >= 3.5) return 'Strong foundation. Your ethical commitments are largely in place — the next step is closing the remaining gaps.';
+      if (score >= 2.5) return 'Emerging. You have the building blocks, but meaningful gaps remain in how ethical principles are practiced day to day.';
+      if (score >= 1.5) return 'Early stage. There is significant room to strengthen ethical infrastructure across most areas.';
+      return 'Starting point. This score reflects an opportunity to fundamentally rethink how your organization approaches ethics.';
+    }
+
+    window.submitAssessment = function () {
+      var emailInput = document.getElementById('gate-email');
+      var email = emailInput.value.trim();
+
+      if (!email || !emailInput.checkValidity()) {
+        emailInput.focus();
+        emailInput.reportValidity();
+        return;
+      }
+
+      var scores = calculateScores();
+      var revealBtn = document.getElementById('revealBtn');
+      revealBtn.textContent = 'CALCULATING...';
+      revealBtn.style.pointerEvents = 'none';
+      revealBtn.style.opacity = '0.6';
+
+      // Submit to Airtable via serverless function
+      var payload = {
+        email: email,
+        consent: scores.pillarScores.consent,
+        representation: scores.pillarScores.representation,
+        dignity: scores.pillarScores.dignity,
+        sovereignty: scores.pillarScores.sovereignty,
+        accountability: scores.pillarScores.accountability,
+        ethoScore: scores.ethoScore,
+      };
+
+      fetch('/.netlify/functions/submit-assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function () { showResults(scores); })
+        .catch(function () { showResults(scores); }); // Show results even if save fails
+    };
+
+    function showResults(scores) {
+      document.getElementById('emailGate').classList.remove('active');
+      document.getElementById('progressWrap').style.display = 'none';
+      document.getElementById('resultsSection').classList.add('active');
+
+      // Animate score number
+      var scoreEl = document.getElementById('scoreNumber');
+      var target = scores.ethoScore;
+      var current = 0;
+      var step = target / 40;
+      var counter = setInterval(function () {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(counter);
+        }
+        scoreEl.textContent = current.toFixed(1);
+      }, 25);
+
+      // Animate ring
+      var circle = document.getElementById('scoreCircle');
+      var circumference = 2 * Math.PI * 72; // ~452
+      var offset = circumference - (target / 5) * circumference;
+      setTimeout(function () {
+        circle.style.strokeDashoffset = offset;
+      }, 100);
+
+      // Interpretation
+      document.getElementById('scoreInterpretation').textContent = getInterpretation(target);
+
+      // Pillar bars
+      pillars.forEach(function (p) {
+        var score = scores.pillarScores[p];
+        var pct = (score / 5) * 100;
+        document.getElementById('score-' + p).textContent = score.toFixed(1);
+        setTimeout(function () {
+          document.getElementById('bar-' + p).style.width = pct + '%';
+        }, 300);
+      });
+
+      // Scroll to results
+      document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  })();
+  </script>
+</body>
+</html>
