@@ -138,10 +138,17 @@ function startGlobe() {
   // Size canvas to match text block height (hex = 43% of canvas)
   const heroLeft = document.querySelector('.hero-left');
   if (heroLeft) {
-    const textH = heroLeft.offsetHeight;
-    const size = Math.round(textH / 0.43);
-    canvas.style.width = size + 'px';
-    canvas.style.height = size + 'px';
+    const isMobile = window.innerWidth <= 960;
+    if (isMobile) {
+      const size = Math.min(340, window.innerWidth * 0.85);
+      canvas.style.width = size + 'px';
+      canvas.style.height = size + 'px';
+    } else {
+      const textH = heroLeft.offsetHeight;
+      const size = Math.round(textH / 0.43);
+      canvas.style.width = size + 'px';
+      canvas.style.height = size + 'px';
+    }
   }
 
   // Scale buffer for sharp rendering at any CSS display size

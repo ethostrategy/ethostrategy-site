@@ -1109,10 +1109,25 @@ footer .footer-nav a:hover { color: var(--sky); }
   .nav-links a { display: none; }
   .nav-brand canvas { width: 220px; height: 28px; }
   .nav-wordmark { font-size: 20px; }
-  .hero { padding: 140px 5% 60px; }
+  .hero { padding: 140px 5% 60px; align-items: flex-start; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-h1 { font-size: 40px; }
-  #globeCanvas { width: 360px; max-height: none; }
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 320px;
+    overflow: hidden;
+  }
+  #globeCanvas {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 320px !important;
+    height: 320px !important;
+  }
   section.section, .cta-band { padding: 80px 5%; }
   .section-title, .cta-band h2 { font-size: 34px; }
   .page-intro { padding: 150px 5% 60px; }
