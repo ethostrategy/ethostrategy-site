@@ -70,10 +70,34 @@
       </div>
     </section>
 
-    <section class="cta-band bordered">
-      <h2>Want to talk about <em>your</em> work?</h2>
-      <p>Every engagement starts with a conversation. No pitch deck required.</p>
-      <a href="/contact/" class="btn-primary">GET IN TOUCH</a>
+    <section class="section bordered">
+      <div class="section-inner" style="max-width:620px; margin:0 auto;">
+        <h2 class="section-title">What are we <em>not seeing?</em></h2>
+        <p class="section-lede">We'd rather be corrected than comfortable.</p>
+
+        <form name="insights-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/insights/?thanks=true" style="margin-top:40px;">
+          <input type="hidden" name="form-name" value="insights-feedback" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="field">
+            <label for="feedback-email">Email</label>
+            <input type="email" id="feedback-email" name="email" required />
+          </div>
+
+          <div class="field">
+            <label for="feedback-thoughts">Share your thoughts</label>
+            <textarea id="feedback-thoughts" name="thoughts" required placeholder="What resonated? What didn't?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">SEND</button>
+        </form>
+
+        <div id="feedback-success" class="form-success" role="status" aria-live="polite">
+          <h3>Received.</h3>
+          <p>Thanks for pushing back — that's how the work gets better.</p>
+          <a href="/insights/" class="btn-ghost">← Back to Insights</a>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -99,5 +123,21 @@
   <script src="/assets/js/stars.js"></script>
   <script src="/assets/js/logo.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('thanks') === 'true') {
+        var form = document.querySelector('[name="insights-feedback"]');
+        var success = document.getElementById('feedback-success');
+        if (form && success) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.setAttribute('tabindex', '-1');
+          success.focus({ preventScroll: false });
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
