@@ -1,6 +1,6 @@
 /* ============================================================
    ETHOSTRATEGY — main.js
-   Nav scroll state + init hooks for stars, logo, globe.
+   Nav scroll state + init hooks for stars and globe.
    ============================================================ */
 
 // Nav scroll background
@@ -13,7 +13,7 @@ window.addEventListener('scroll', () => {
 function init() {
   if (typeof resizeSky === 'function') resizeSky();
   if (typeof startGlobe === 'function') startGlobe();
-  if (typeof startNavLogo === 'function') startNavLogo('logoCanvas');
+
 }
 
 if (document.fonts && document.fonts.ready) {

@@ -55,7 +55,7 @@
   <!-- Wordmark -->
   <g font-family="Satoshi, -apple-system, Helvetica, Arial, sans-serif">
     <!-- Eyebrow -->
-    <text x="80" y="200" font-size="20" font-weight="500" fill="#A4BEF2" letter-spacing="4">[ FOUNDER-LED ]</text>
+    <text x="80" y="200" font-size="20" font-weight="500" fill="#A4BEF2" letter-spacing="4">[ EST. 2023 ]</text>
 
     <!-- Headline -->
     <text x="80" y="290" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-2">Strategy built on</text>
@@ -66,7 +66,7 @@
     <text x="80" y="446" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-2">to last.</text>
 
     <!-- Sub -->
-    <text x="80" y="510" font-size="20" font-weight="300" fill="rgba(255,255,255,0.55)">Consulting for organizations committed to doing good — the right way.</text>
+    <text x="80" y="510" font-size="20" font-weight="300" fill="rgba(255,255,255,0.55)">For organizations that mean it.</text>
 
     <!-- URL tag -->
     <text x="80" y="570" font-size="18" font-weight="500" fill="#6B7ACC" letter-spacing="2">ETHOSTRATEGY.CO</text>
