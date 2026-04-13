@@ -134,11 +134,29 @@ function startGlobe() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const W = 800, H = 800, cx = W / 2, cy = H / 2, r = 200;
+
+  // Size canvas to match text block height (hex = 43% of canvas)
+  const heroLeft = document.querySelector('.hero-left');
+  if (heroLeft) {
+    const textH = heroLeft.offsetHeight;
+    const size = Math.round(textH / 0.43);
+    canvas.style.width = size + 'px';
+    canvas.style.height = size + 'px';
+  }
+
+  // Scale buffer for sharp rendering at any CSS display size
+  const dpr = window.devicePixelRatio || 1;
+  const oversample = 1.5;
+  const bufferScale = dpr * oversample;
+  canvas.width = W * bufferScale;
+  canvas.height = H * bufferScale;
+
   let t0 = null;
 
   function frame(ts) {
     if (!t0) t0 = ts;
     const t = (ts - t0) * 0.0003;
+    ctx.setTransform(bufferScale, 0, 0, bufferScale, 0, 0);
     ctx.clearRect(0, 0, W, H);
 
     const hr = r * 0.86;
